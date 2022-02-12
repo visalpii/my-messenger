@@ -6,7 +6,7 @@ function ChatScreenDisabled() {
     <Container>
       <Header>
         <HeaderInformation>
-          <h3>begin by clicking &quot;START A CHAT&quot;</h3>
+          <h3>begin by clicking &quot;START A NEW CHAT&quot;</h3>
         </HeaderInformation>
       </Header>
       <MessageContainer>
