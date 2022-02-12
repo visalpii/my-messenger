@@ -8,14 +8,9 @@ function Loading() {
     <center style={{ display: "grid", placeItems: "center", height: "100vh" }}>
       <div>
         <div className={classes.logo}>
-          <Image
-            src="/images/whatsapp-logo.png"
-            alt=""
-            width="200"
-            height="200"
-          />
+          <Image src="/images/app-logo.png" alt="" width="200" height="200" />
         </div>
-        <SyncLoader color="#25D366" speedMultiplier={0.7} />
+        <SyncLoader color="lightgray" speedMultiplier={0.7} />
       </div>
     </center>
   );

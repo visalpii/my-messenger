@@ -15,7 +15,7 @@ function login() {
         <title>Login</title>
       </Head>
       <LoginContainer>
-        <Logo src="/images/whatsapp-logo.png" />
+        <Logo src="/images/app-logo.png" />
         <Button onClick={signIn} variant="outlined" color="inherit">
           Sign in with Google
         </Button>

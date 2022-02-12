@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Container>
       <Head>
-        <title>Whatsapp 2.0</title>
+        <title>My Messenger</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Sidebar />
