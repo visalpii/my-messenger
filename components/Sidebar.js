@@ -97,7 +97,8 @@ export default Sidebar;
 
 const Container = styled.div`
   flex: 0.45;
-  border-right: 1px solid whtiesmoke;
+  /* border-right: 1px solid whtiesmoke; */
+  border-right: 1px solid #F8F8F8;
   height: 100vh;
   min-width: 300px;
   max-width: 350px;
