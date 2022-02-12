@@ -1,6 +1,6 @@
 import React from "react";
 import { signOut } from "firebase/auth";
-import { collection, addDoc, query, where } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -19,8 +19,7 @@ function Sidebar() {
     chatsRef,
     where("users", "array-contains", user.email)
   );
-  const [chatsSnapshot, loadingChatsSnapshot, error] =
-    useCollection(userEmailQuery);
+  const [chatsSnapshot, loadingChatsSnapshot] = useCollection(userEmailQuery);
 
   const chatAlreadyExists = (recipientEmail) => {
     const duplicateEmails = [];
@@ -35,14 +34,27 @@ function Sidebar() {
     return duplicateEmails.length > 0 ? true : false;
   };
 
+  const isRecipientInSystem = async (recipientEmail) => {
+    const currentUsers = [];
+    const recipientEmailQuery = query(
+      collection(db, "users"),
+      where("email", "==", recipientEmail)
+    );
+    const recipientSnapshot = await getDocs(recipientEmailQuery);
+    recipientSnapshot.forEach((doc) => currentUsers.push(doc.data()));
+    return currentUsers.length > 0 ? true : false;
+  };
+
   const createChat = async () => {
     const input = prompt(
       "Please enter an email address for the user you wish to chat with."
     );
+    const userIsInSystem = await isRecipientInSystem(input);
     if (!input) return null;
     if (
       EmailValidator.validate(input) &&
       !chatAlreadyExists(input) &&
+      userIsInSystem &&
       input !== user.email
     ) {
       const docRef = await addDoc(collection(db, "chats"), {
@@ -53,7 +65,6 @@ function Sidebar() {
 
   const handleSignout = async () => {
     await signOut(auth);
-    
   };
 
   return (
