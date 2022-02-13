@@ -82,7 +82,9 @@ function Sidebar() {
       </Header>
       <Search>
         <SearchIcon />
-        <SearchInput placeholder="Search in chats" />
+        <SearchInput
+          placeholder="Search in chats"
+        />
       </Search>
       <SidebarButton onClick={createChat}>Start a new chat</SidebarButton>
       {!loadingChatsSnapshot &&
@@ -98,7 +100,7 @@ export default Sidebar;
 const Container = styled.div`
   flex: 0.45;
   /* border-right: 1px solid whtiesmoke; */
-  border-right: 1px solid #F8F8F8;
+  border-right: 1px solid #f8f8f8;
   height: 100vh;
   min-width: 300px;
   max-width: 350px;
